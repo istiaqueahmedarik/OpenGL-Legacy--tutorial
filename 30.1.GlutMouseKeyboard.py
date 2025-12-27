@@ -91,6 +91,14 @@ def mouse_motion(x, y):
     glutPostRedisplay()
 
 
+def animate(value):
+    global angle
+    angle += 1
+    glutPostRedisplay()
+
+    glutTimerFunc(5000, animate, 0)
+
+
 def main():
     glutInit()
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH)
@@ -101,6 +109,8 @@ def main():
     glutSpecialFunc(keyboard)
     glutMouseFunc(mouse_click)
     glutMotionFunc(mouse_motion)
+    glutTimerFunc(5000, animate, 0)
+
     glutMainLoop()
 
 
